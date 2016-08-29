@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using Commander;
@@ -19,14 +20,6 @@ namespace SaveCodeManager.Gui.ViewModels.Tkok
     {
         private readonly ISaveCodesLoader<ITkokSaveCode> _tkokSavesLoader;
 
-        public bool ShowUserNameColumn { get; set; }
-
-        public bool ShowOnlyTheLatest { get; set; }
-
-        public Timer RefreshTimer { get; set; }
-
-        public ObservableCollection<ITkokSaveCodeViewModel> SaveCodes { get; set; }
-
         public TkokSavesViewModel(ISaveCodesLoader<ITkokSaveCode> tkokSavesLoader)
         {
             _tkokSavesLoader = tkokSavesLoader;
@@ -37,15 +30,15 @@ namespace SaveCodeManager.Gui.ViewModels.Tkok
             if (IsInDesignMode)
             {
                 SaveCodes.Add(new TkokSaveCodeViewModel(
-                        "4nonym0us",
-                        TkokSaveCode.HeroKind.Ranger,
-                        10,
-                        10000,
-                        20000,
-                        "p@$$w0rd",
-                        DateTime.Now,
-                        "3.3.0f",
-                        "12345"));
+                    "4nonym0us",
+                    TkokSaveCode.HeroKind.Ranger,
+                    10,
+                    10000,
+                    20000,
+                    "p@$$w0rd",
+                    DateTime.Now,
+                    "3.3.0f",
+                    "12345"));
             }
             else
             {
@@ -53,18 +46,24 @@ namespace SaveCodeManager.Gui.ViewModels.Tkok
 
 
                 RefreshTimer = new Timer();
-                RefreshTimer.Elapsed += (sender, args) => RefreshSaveCodes();
+                RefreshTimer.Elapsed += async (sender, args) => await RefreshSaveCodes();
                 RefreshTimer.Interval = Settings.Default.RefreshInterval;
                 RefreshTimer.Start();
             }
         }
 
+        public bool ShowUserNameColumn { get; set; }
+
+        public bool ShowOnlyTheLatest { get; set; }
+
+        public ObservableCollection<ITkokSaveCodeViewModel> SaveCodes { get; set; }
+
         [OnCommand(nameof(RefreshSaveCodes) + "Command")]
-        public void RefreshSaveCodes()
+        public async Task RefreshSaveCodes()
         {
             Trace.WriteLine("RefreshingCodes");
             var newCodes =
-                _tkokSavesLoader.LoadCodes(Settings.Default.War3Path)
+                (await _tkokSavesLoader.LoadCodesAsync(Settings.Default.War3Path))
                     .OrderByDescending(s => s.CreationTime)
                     .Select(c => new TkokSaveCodeViewModel(c))
                     .ToList();
@@ -88,15 +87,17 @@ namespace SaveCodeManager.Gui.ViewModels.Tkok
             foreach (var s in toBeAdded)
             {
                 Action<ITkokSaveCodeViewModel> addMethod = SaveCodes.Add;
-                Application.Current.Dispatcher.BeginInvoke(addMethod, s);
+                await Application.Current.Dispatcher.BeginInvoke(addMethod, s);
             }
             foreach (var s in toBeDeleted)
             {
                 Action<ITkokSaveCodeViewModel> removeMethod = code => SaveCodes.Remove(code);
-                Application.Current.Dispatcher.BeginInvoke(removeMethod, s);
+                await Application.Current.Dispatcher.BeginInvoke(removeMethod, s);
             }
 
             //SaveCodes.ToList().Select(s => s.UserName).Distinct().Count() <= 1;
         }
+
+        public Timer RefreshTimer { get; set; }
     }
 }

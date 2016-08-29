@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using SaveCodeManager.Core.Helpers;
 using SaveCodeManager.Core.Saves.Tkok;
 
@@ -10,7 +11,7 @@ namespace SaveCodeManager.Core.Services
     {
         private string _tkokSavePath = @"TKoK_Save_Files";
 
-        public ICollection<ITkokSaveCode> LoadCodes(string war3Path)
+        public async Task<ICollection<ITkokSaveCode>> LoadCodesAsync(string war3Path)
         {
             if (!Directory.Exists(war3Path))
             {
@@ -25,11 +26,14 @@ namespace SaveCodeManager.Core.Services
 
             var tkokSaveFolders = Directory.GetDirectories(tkokSavesFolder);
 
-            return (from saveFolder in tkokSaveFolders
-                    select new DirectoryInfo(saveFolder)
-                    into saveFilesDir
-                    from saveFile in saveFilesDir.GetFiles()
-                    select RegexpHelper.ParseTkokSave(saveFile)).ToList();
+            var list = new List<ITkokSaveCode>();
+            foreach (var saveFolder in tkokSaveFolders)
+            {
+                var saveFilesDir = new DirectoryInfo(saveFolder);
+                foreach (var saveFile in saveFilesDir.GetFiles())
+                    list.Add(await RegexpHelper.ParseTkokSaveAsync(saveFile));
+            }
+            return list;
         }
     }
 }
