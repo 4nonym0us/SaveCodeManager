@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using Abp;
 using Castle.Facilities.Logging;
 using SaveCodeManager.Gui.Properties;
@@ -27,7 +28,7 @@ namespace SaveCodeManager.Gui
             _mainWindow = _bootstrapper.IocManager.Resolve<Views.MainWindow>();
 
             // If user runs program for first time he must set the war3path
-            if (string.IsNullOrWhiteSpace(Settings.Default.War3Path))
+            if (string.IsNullOrWhiteSpace(Settings.Default.War3Path) || !Directory.Exists(Settings.Default.War3Path))
             {
                 _mainWindow.SettingsFlyout.IsFirstStart = true;
                 _mainWindow.SettingsFlyout.Width = _mainWindow.Width;
