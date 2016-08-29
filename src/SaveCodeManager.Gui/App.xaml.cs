@@ -2,6 +2,7 @@
 using Abp;
 using Castle.Facilities.Logging;
 using SaveCodeManager.Gui.Properties;
+using SaveCodeManager.Gui.ViewModels.Locator;
 
 namespace SaveCodeManager.Gui
 {
@@ -25,7 +26,7 @@ namespace SaveCodeManager.Gui
 
             _mainWindow = _bootstrapper.IocManager.Resolve<Views.MainWindow>();
 
-            // If user runs program for first time
+            // If user runs program for first time he must set the war3path
             if (string.IsNullOrWhiteSpace(Settings.Default.War3Path))
             {
                 _mainWindow.SettingsFlyout.IsFirstStart = true;
@@ -39,6 +40,8 @@ namespace SaveCodeManager.Gui
 
         protected override void OnExit(ExitEventArgs e)
         {
+            ViewModelLocator.Cleanup();
+
             _bootstrapper.IocManager.Release(_mainWindow);
             _bootstrapper.Dispose();
         }

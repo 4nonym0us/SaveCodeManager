@@ -56,8 +56,6 @@ namespace SaveCodeManager.Gui.ViewModels.Locator
 
         public ITkokSavesViewModel TkokSavesViewModel => ServiceLocator.Current.GetInstance<TkokSavesViewModel>();
 
-        public SettingsFlyout SettingsFlyout => ServiceLocator.Current.GetInstance<SettingsFlyout>();
-
         //public ITkokSavesViewModel YouTdSavesViewModel => ServiceLocator.Current.GetInstance<TkokSavesViewModel>();
 
         public static void Cleanup()

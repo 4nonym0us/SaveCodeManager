@@ -8,8 +8,8 @@
              xmlns:converters="clr-namespace:SaveCodeManager.Gui.Converters">
     <Application.Resources>
         <ResourceDictionary>
+            <locator:ViewModelLocator x:Key="Locator" />
             <converters:InvertedBooleanToVisibilityConverter x:Key="InvertedBoolToVisConverter" />
-            <locator:ViewModelLocator x:Key="Locator" d:IsDataSource="True"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/Icons.xaml" />
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
