@@ -22,7 +22,7 @@
                  Background="Transparent"
                  RenderOptions.EdgeMode="Aliased"
                  RenderOptions.BitmapScalingMode="HighQuality">
-                <Image Source="pack://application:,,,/SaveCodeManager.Gui;component/Resources/logo-w.png"></Image>
+                <Image Source="pack://application:,,,/SaveCode Manager;component/Resources/logo-w.png"></Image>
             </Grid>
         </DataTemplate>
     </controls:MetroWindow.IconTemplate>
