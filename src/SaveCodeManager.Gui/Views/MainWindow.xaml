@@ -1,0 +1,115 @@
+﻿<controls:MetroWindow x:Class="SaveCodeManager.Gui.Views.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      xmlns:views="clr-namespace:SaveCodeManager.Gui.Views"
+                      xmlns:flyouts="clr-namespace:SaveCodeManager.Gui.Flyouts"
+                      mc:Ignorable="d"
+                      Title="SaveCode Manager" Height="400" Width="600"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      WindowStartupLocation="CenterScreen"
+                      ShowIconOnTitleBar="True"
+                      DataContext="{Binding MainWindowViewModel, Mode=OneWay, Source={StaticResource Locator}}"
+                      RightWindowCommandsOverlayBehavior="HiddenTitleBar">
+
+    <controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Grid Width="{TemplateBinding Width}"
+                 Height="{TemplateBinding Height}"
+                 Margin="4"
+                 Background="Transparent"
+                 RenderOptions.EdgeMode="Aliased"
+                 RenderOptions.BitmapScalingMode="HighQuality">
+                <Image Source="pack://application:,,,/SaveCodeManager.Gui;component/Resources/logo-w.png"></Image>
+            </Grid>
+        </DataTemplate>
+    </controls:MetroWindow.IconTemplate>
+
+    <controls:MetroWindow.Flyouts>
+        <controls:FlyoutsControl>
+            <flyouts:SettingsFlyout x:Name="SettingsFlyout" />
+        </controls:FlyoutsControl>
+    </controls:MetroWindow.Flyouts>
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <ToggleButton Content="settings" IsChecked="{Binding ElementName=SettingsFlyout, Path=IsOpen}" Cursor="Hand" />
+            <!--<ToggleButton Content="Latest"
+                          Name="MyCheckbox"
+                          IsChecked="{Binding ShowOnlyTheLatest}"
+                          Command="{Binding RefreshSaveCodesCommand}" />-->
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                               Height="20"
+                               Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cupcake}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                               VerticalAlignment="Center"
+                               Text="Join offciail TKoK Garena+ clan." />
+                </StackPanel>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
+    <controls:MetroContentControl Name="MetroContentControl">
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate x:Key="ZeroTabsPlaceholder">
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Rectangle Margin="5" Width="76" Height="76" Fill="Black">
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Visual="{StaticResource appbar_home}" Stretch="Fill" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Margin="5">No games selected.</TextBox>
+                        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">To start using W3 SaveManager, choose a desired maps from Map list menu.</TextBox>
+                    </StackPanel>
+                </DataTemplate>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0" />
+                <!-- TODO?: Menu -->
+                <RowDefinition Height="*" />
+                <!-- Content -->
+                <RowDefinition Height="Auto" />
+                <!-- StatusBar -->
+            </Grid.RowDefinitions>
+            <!--<Menu Grid.Row="0"
+                  Margin="0" Padding="0"
+                  HorizontalAlignment="Left">
+                -->
+            <!--<MenuItem Header="Maps list">
+                    <MenuItem IsCheckable="True" IsChecked="{Binding}" Header="The Kingdom of Kaliron (TKoK)"/>
+                    <MenuItem Header="YouTD"/>
+                </MenuItem>-->
+            <!--
+                <MenuItem Header="About"/>
+            </Menu>-->
+            <controls:MetroTabControl Grid.Row="1">
+                <controls:MetroTabItem Header="TKoK">
+                    <views:TkokSaves DataContext="{Binding TkokSavesViewModel, Mode=OneWay, Source={StaticResource Locator}}"/>
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="YouTD">
+                    <TextBlock Text="In development" TextAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                </controls:MetroTabItem>
+                <controls:MetroTabItem Header="GaiasRetaliation">
+                    <TextBlock Text="In development" TextAlignment="Center" VerticalAlignment="Center" FontSize="25"/>
+                </controls:MetroTabItem>
+                <ContentControl ContentTemplate="{StaticResource ZeroTabsPlaceholder}"/>
+            </controls:MetroTabControl>
+
+            <StatusBar Grid.Row="2">
+                <StatusBarItem>Warcraft III SaveCode Manager</StatusBarItem>
+                <Separator Style="{StaticResource MetroStatusBarSeparator}" />
+                <StatusBarItem>tbd</StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </controls:MetroContentControl>
+
+</controls:MetroWindow>

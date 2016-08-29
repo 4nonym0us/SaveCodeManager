@@ -1,0 +1,64 @@
+﻿<controls:Flyout x:Class="SaveCodeManager.Gui.Flyouts.SettingsFlyout"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:converters="clr-namespace:SaveCodeManager.Gui.Converters"
+                 Header="Settings" Position="Right" Width="300"
+                 x:Name="SettingsFlyoutWindow"
+                 mc:Ignorable="d"
+                 d:DesignHeight="300" d:DesignWidth="600"
+                 CloseCommand="{Binding SaveSettingsCommand, ElementName=SettingsFlyoutWindow}"
+                 CloseButtonVisibility="{Binding IsFirstStart, ElementName=SettingsFlyoutWindow, Converter={StaticResource InvertedBoolToVisConverter}}"
+                 Theme="Light">
+
+    <controls:Flyout.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ListView.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatSlider.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </controls:Flyout.Resources>
+
+    <StackPanel Margin="10 0">
+        <StackPanel.Resources>
+            <BooleanToVisibilityConverter x:Key="BoolToVisConverter"/>
+            <DataTemplate x:Key="FirstStartContent">
+                <StackPanel>
+                    <TextBlock FontSize="14" FontWeight="SemiBold" TextAlignment="Center">Welcome to the SaveCode manager!</TextBlock>
+                    <TextBlock TextWrapping="Wrap" MaxWidth="450" TextAlignment="Center" x:Name="FirstStartTextBlock">
+                Looks like You have never used the application before. To start the journey, set the Warcraft III folder path.</TextBlock>
+                </StackPanel>
+            </DataTemplate>
+            <DataTemplate x:Key="SelectFileControl">
+                <Grid>
+                    <TextBox Text="{Binding War3Path, ElementName=SettingsFlyoutWindow, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    </TextBox>
+                    <Button HorizontalAlignment="Right"
+                            Content="..."
+                            Command="{Binding OpenFileDialogCommand, ElementName=SettingsFlyoutWindow}" />
+                </Grid>
+            </DataTemplate>
+        </StackPanel.Resources>
+
+        <ContentControl Margin="10"
+                        KeyboardNavigation.IsTabStop="False"
+                        x:Name="FirstStartControl"
+                        HorizontalAlignment="Center"
+                        ContentTemplate="{StaticResource FirstStartContent}"
+                        Visibility="{Binding IsFirstStart, ElementName=SettingsFlyoutWindow, Converter={StaticResource BoolToVisConverter}}"/>
+
+        <Label Content="Warcraft III directory"/>
+        <ContentControl ContentTemplate="{StaticResource SelectFileControl}"/>
+
+        <Label Margin="0 10 0 0"
+               Content="Polling delay of save folders, ms:"/>
+        <controls:NumericUpDown Value="{Binding RefreshInterval, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ElementName=SettingsFlyoutWindow}"
+                                Minimum="1000"
+                                Maximum="30000"
+                                Interval="500"
+                                StringFormat="N0" />
+    </StackPanel>
+</controls:Flyout>
