@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SaveCodeManager.Core.Saves.Tkok
+﻿namespace SaveCodeManager.Core.Saves.Tkok
 {
     public interface ITkokSaveCode : ISaveCode
     {

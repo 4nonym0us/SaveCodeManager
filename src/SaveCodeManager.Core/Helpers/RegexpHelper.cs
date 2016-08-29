@@ -1,10 +1,8 @@
 using System;
 using System.IO;
 using System.Security.Cryptography;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using SaveCodeManager.Core.Saves;
 using SaveCodeManager.Core.Saves.Tkok;
 
 namespace SaveCodeManager.Core.Helpers

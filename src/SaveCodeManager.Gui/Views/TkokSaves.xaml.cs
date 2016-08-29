@@ -1,6 +1,4 @@
-﻿using SaveCodeManager.Gui.ViewModels.Tkok;
-
-namespace SaveCodeManager.Gui.Views
+﻿namespace SaveCodeManager.Gui.Views
 {
     /// <summary>
     /// Interaction logic for TkokSaves.xaml

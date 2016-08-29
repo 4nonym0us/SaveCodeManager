@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using Commander;
-using SaveCodeManager.Core.Saves;
 using SaveCodeManager.Core.Saves.Tkok;
 
 namespace SaveCodeManager.Gui.ViewModels.Tkok

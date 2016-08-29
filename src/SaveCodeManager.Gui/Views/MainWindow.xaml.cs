@@ -1,5 +1,4 @@
-﻿using SaveCodeManager.Gui.ViewModels;
-using SaveCodeManager.Gui.ViewModels.Interfaces;
+﻿using SaveCodeManager.Gui.ViewModels.Interfaces;
 
 namespace SaveCodeManager.Gui.Views
 {

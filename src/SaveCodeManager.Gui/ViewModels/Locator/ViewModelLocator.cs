@@ -20,7 +20,6 @@ using SaveCodeManager.Gui.Flyouts;
 using SaveCodeManager.Gui.Properties;
 using SaveCodeManager.Gui.ViewModels.Interfaces;
 using SaveCodeManager.Gui.ViewModels.Tkok;
-using SaveCodeManager.Gui.Views;
 
 namespace SaveCodeManager.Gui.ViewModels.Locator
 {
@@ -51,10 +50,6 @@ namespace SaveCodeManager.Gui.ViewModels.Locator
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
-
-            
-            //SimpleIoc.Default.Register<ChatViewModel>();
-            //SimpleIoc.Default.Register<LinkedChatViewModel>();
         }
 
         public IMainWindowViewModel MainWindowViewModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();
