@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using SaveCodeManager.Core.Helpers;
-using SaveCodeManager.Core.Saves.Tkok;
+using SaveCodeManager.Helpers;
+using SaveCodeManager.Saves.Tkok;
 
-namespace SaveCodeManager.Core.Services
+namespace SaveCodeManager.Services
 {
     public class TkokSavesLoader : ISaveCodesLoader<ITkokSaveCode>
     {

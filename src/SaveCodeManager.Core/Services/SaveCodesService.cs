@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Abp.Dependency;
 using Castle.Core.Logging;
-using SaveCodeManager.Core.Saves;
+using SaveCodeManager.Saves;
 
-namespace SaveCodeManager.Core.Services
+namespace SaveCodeManager.Services
 {
     [Obsolete("I dunno why I created this service...")]
     public class SaveCodesService : ITransientDependency

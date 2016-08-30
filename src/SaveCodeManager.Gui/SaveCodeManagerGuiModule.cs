@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using Abp.Dependency;
 using Abp.Modules;
-using SaveCodeManager.Core;
 using SaveCodeManager.Gui.Flyouts;
 using SaveCodeManager.Gui.ViewModels;
 using SaveCodeManager.Gui.ViewModels.Interfaces;

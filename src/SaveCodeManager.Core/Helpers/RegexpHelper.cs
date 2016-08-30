@@ -3,9 +3,9 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using SaveCodeManager.Core.Saves.Tkok;
+using SaveCodeManager.Saves.Tkok;
 
-namespace SaveCodeManager.Core.Helpers
+namespace SaveCodeManager.Helpers
 {
     public static class RegexpHelper
     {

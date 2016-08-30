@@ -5,8 +5,8 @@ using Abp;
 using Abp.Dependency;
 using Abp.Threading;
 using Castle.Facilities.Logging;
-using SaveCodeManager.Core.Saves.Tkok;
-using SaveCodeManager.Core.Services;
+using SaveCodeManager.Saves.Tkok;
+using SaveCodeManager.Services;
 
 namespace SaveCodeManager.Cli
 {

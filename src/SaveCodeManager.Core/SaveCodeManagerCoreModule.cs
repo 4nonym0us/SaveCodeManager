@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using Abp.Dependency;
 using Abp.Modules;
-using SaveCodeManager.Core.Saves.Tkok;
-using SaveCodeManager.Core.Services;
+using SaveCodeManager.Saves.Tkok;
+using SaveCodeManager.Services;
 
-namespace SaveCodeManager.Core
+namespace SaveCodeManager
 {
     public class SaveCodeManagerCoreModule : AbpModule
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SaveCodeManager.Core.Saves.Tkok
+namespace SaveCodeManager.Saves.Tkok
 {
     public class TkokSaveCode : ITkokSaveCode
     {

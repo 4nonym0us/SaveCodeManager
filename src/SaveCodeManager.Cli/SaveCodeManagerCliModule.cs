@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
 using Abp.Modules;
-using SaveCodeManager.Core;
 
 namespace SaveCodeManager.Cli
 {

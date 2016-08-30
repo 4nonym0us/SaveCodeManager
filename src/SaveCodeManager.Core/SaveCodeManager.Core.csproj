@@ -7,7 +7,7 @@
     <ProjectGuid>{D291E135-AB7D-487F-8A92-002D119AD0ED}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SaveCodeManager.Core</RootNamespace>
+    <RootNamespace>SaveCodeManager</RootNamespace>
     <AssemblyName>SaveCodeManager.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SaveCodeManager.Core
+namespace SaveCodeManager
 {
     [Flags]
     public enum Map

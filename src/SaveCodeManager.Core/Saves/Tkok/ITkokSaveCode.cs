@@ -1,4 +1,4 @@
-﻿namespace SaveCodeManager.Core.Saves.Tkok
+﻿namespace SaveCodeManager.Saves.Tkok
 {
     public interface ITkokSaveCode : ISaveCode
     {

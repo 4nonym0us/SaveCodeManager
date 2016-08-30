@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace SaveCodeManager.Core.Helpers
+namespace SaveCodeManager.Helpers
 {
     public static class EnumHelper
     {

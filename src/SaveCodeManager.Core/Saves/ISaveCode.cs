@@ -1,6 +1,6 @@
 using System;
 
-namespace SaveCodeManager.Core.Saves
+namespace SaveCodeManager.Saves
 {
     /// <summary>
     /// This interface must be implemented by all save codes to identify them by convention.

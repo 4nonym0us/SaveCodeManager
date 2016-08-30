@@ -9,9 +9,9 @@ using System.Windows;
 using Commander;
 using GalaSoft.MvvmLight;
 using PropertyChanged;
-using SaveCodeManager.Core.Saves.Tkok;
-using SaveCodeManager.Core.Services;
 using SaveCodeManager.Gui.Properties;
+using SaveCodeManager.Saves.Tkok;
+using SaveCodeManager.Services;
 
 namespace SaveCodeManager.Gui.ViewModels.Tkok
 {
