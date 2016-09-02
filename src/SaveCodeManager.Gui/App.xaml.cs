@@ -1,9 +1,11 @@
 ﻿using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 using Abp;
 using Castle.Facilities.Logging;
 using SaveCodeManager.Gui.Properties;
 using SaveCodeManager.Gui.ViewModels.Locator;
+using Squirrel;
 
 namespace SaveCodeManager.Gui
 {

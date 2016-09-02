@@ -1,3 +1,9 @@
+##################
+# custom folders #
+##################
+/Releases
+/.vs/
+
 ###################
 # compiled source #
 ###################
@@ -73,4 +79,3 @@ _[Ss]cripts
 *.nupkg
 *.ncrunchsolution
 *.dot[Cc]over
-.vs/

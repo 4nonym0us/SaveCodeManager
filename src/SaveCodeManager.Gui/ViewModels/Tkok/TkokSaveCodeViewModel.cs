@@ -23,7 +23,7 @@ namespace SaveCodeManager.Gui.ViewModels.Tkok
         [OnCommand(nameof(CopyPasswordToClipboard) + "Command")]
         public void CopyPasswordToClipboard()
         {
-            Clipboard.SetText("-load " + Password);
+            Clipboard.SetText(Password);
         }
     }
 }

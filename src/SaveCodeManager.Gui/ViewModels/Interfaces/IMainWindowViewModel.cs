@@ -2,6 +2,10 @@
 {
     public interface IMainWindowViewModel
     {
-        //void EditSettings();
+        string AppVerion { get; }
+
+        string StatusBarText { get; set; }
+
+        void OnWindowLoaded();
     }
 }
