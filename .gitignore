@@ -3,6 +3,7 @@
 ##################
 /Releases
 /.vs/
+!bin/Update.exe
 
 ###################
 # compiled source #
