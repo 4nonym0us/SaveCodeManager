@@ -3,7 +3,6 @@
 ##################
 /Releases
 /.vs/
-!bin/Update.exe
 
 ###################
 # compiled source #
@@ -30,6 +29,7 @@ _UpgradeReport_Files/
 # Directories #
 ###############
 bin/
+!bin/Update.exe
 obj/
 TestResults/
 ###################
